@@ -1,7 +1,7 @@
 <h1>Listing books</h1>
 
-<%= form_tag({:action=>"search"},{:method=>"GET"}) do %>
-  <%= text_field_tag "search[title]" %>
+<%= form_tag({:action=>"search"},{:method=>"POST"}) do %>
+  <%= text_field_tag "search[title]", @p_title %>
   <%= submit_tag "検索" %>
   <%= link_to "リセット", books_path %>
 <% end %>
