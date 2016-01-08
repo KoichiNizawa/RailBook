@@ -44,6 +44,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @id_error = {}
     unless Book.exists?(id: @review.book_id)
       @id_error = true
     end
@@ -76,6 +77,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:book_id, :body)
+      params.require(:review).permit(:book_id, :user_id, :body)
     end
 end
