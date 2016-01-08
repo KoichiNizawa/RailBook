@@ -62,7 +62,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.where(title: params["search"]["title"])
+    @books = Book.where("title LIKE '%#{params["search"]["title"]}%'")
     @p_title = params["search"]["title"]
     render :index
   end
