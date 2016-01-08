@@ -32,9 +32,9 @@
 
 <h2>評判</h2>
 <ul>
-<%= @book.reviews.each do |review| %>
-  <li><%= review.body %></li>
-<% end %>
+  <% @book.reviews.each do |review| %>
+    <li><%= review.body %></li>
+  <% end %>
 </ul>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |

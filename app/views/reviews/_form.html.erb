@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <% if @id_error.present? %>
+    <div id="error_explanation">
+      <%= "Bookに存在しないIDです。" %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :book_id %><br>

@@ -25,9 +25,13 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @id_error = {}
+    unless Book.exists?(id: @review.book_id)
+      @id_error = true
+    end
 
     respond_to do |format|
-      if @review.save
+      if @review.save && @id_error!=true
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
@@ -40,8 +44,11 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    unless Book.exists?(id: @review.book_id)
+      @id_error = true
+    end
     respond_to do |format|
-      if @review.update(review_params)
+      if @review.update(review_params) && @id_error!=true
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
