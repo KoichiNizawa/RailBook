@@ -1,0 +1,13 @@
+<h1>View Helper Test</h1>
+
+<%= text_field :book, :isbn %>
+<%= number_field :book, :price %>
+<%= text_area :book, :memo %>
+<%= check_box :book, :cd, {}, 0, 1 %>
+<%= radio_button :user, :color, "red" %>赤
+<%= radio_button :user, :color, "blue" %>青
+<%= radio_button :user, :color, "green" %>緑
+<%= select :user, :address, ["出雲市", "松江市", "雲南市"] %>
+<%= collection_select(:book, :title, Book.all, :id, :title) %>
+<%= link_to 'index', books_path %>
+<%= image_tag 'izumosho.png' %>
