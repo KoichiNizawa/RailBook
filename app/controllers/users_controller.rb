@@ -7,6 +7,12 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    if params[:unlogin_flg].present?
+      session[:usr] = nil
+      redirect_to controller: :login, action: :index
+    elsif session[:usr].present?
+      @user = User.find(session[:usr])
+    end
   end
 
   # GET /users/1

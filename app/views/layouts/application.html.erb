@@ -7,12 +7,21 @@
   <%= csrf_meta_tags %>
 
   <%= image_tag 'railbook_header.png' %>
-  <ul>
-    <li><%= link_to "書籍一覧", books_path %></li>
-    <li><%= link_to "出版社一覧", publishes_path %></li>
-    <li><%= link_to "レビュー一覧", reviews_path %></li>
-    <li><%= link_to "ユーザー一覧", users_path %></li>
-  </ul>
+
+  <% if @user.present? %>
+    <p style="text-align : right;">
+      ログインユーザー：<%= @user.try(:username) %>
+      |
+      <%= link_to 'ログアウト', users_path(:unlogin_flg => 1) %>
+    </p>
+    <ul>
+      <li><%= link_to "書籍一覧", books_path %></li>
+      <li><%= link_to "出版社一覧", publishes_path %></li>
+      <li><%= link_to "レビュー一覧", reviews_path %></li>
+      <li><%= link_to "ユーザー一覧", users_path %></li>
+    </ul>
+  <% end %>
+
 </head>
 <body>
 
